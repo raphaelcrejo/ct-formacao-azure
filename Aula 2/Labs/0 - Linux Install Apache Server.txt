@@ -1,0 +1,7 @@
+1 - Instalando o Apache
+sudo apt update
+sudo apt install apache2
+
+
+2 - Listar Discos
+lsblk -d -o +MODEL

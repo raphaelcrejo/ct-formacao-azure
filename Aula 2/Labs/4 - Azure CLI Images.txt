@@ -1,0 +1,21 @@
+Logar no Azure: az Login
+
+Set Subscription: az account set --subscription [mysubscription]
+
+Criar um Resource Group: az group create --name rg_linux --location eastus
+
+Criar uma VM Windows: az vm create --resource-group rg_linux --name linuxVM --image UbuntuLTS --admin-username [usuario] --admin-password ['password']
+
+Parar uma VM: az vm stop --resource-group rg_linux --name linuxVM
+
+Criar Resource Group da Galeria: az group create --name rg_Gallery --location eastus
+
+Criar uma Galeria: az sig create --resource-group rg_Gallery --gallery-name PersonalGallery
+
+Criar uma Definição de imagem: az sig image-definition create --resource-group rg_Gallery --gallery-name PersonalGallery  --gallery-image-definition ImageDefinition --publisher Canonical --offer UbuntuServer --sku 18.04-LTS --os-type Linux --os-state specialized
+
+
+Criar uma Imagem: az sig image-version create --resource-group rg_Gallery --gallery-name PersonalGallery --gallery-image-definition ImageDefinition --gallery-image-version 1.0.0 --target-regions "westcentralus" "southcentralus=1" "eastus=1=standard_zrs" --replica-count 2 --managed-image "/subscriptions/00acdf14-1bef-48ab-afa0-f9a3fdc222fe/resourceGroups/rg_linux/providers/Microsoft.Compute/virtualMachines/linuxVM"
+
+
+Criar uma VM com a imagem: az vm create --resource-group rg_linux --name myVM2 --image "/subscriptions/00acdf14-1bef-48ab-afa0-f9a3fdc222fe/resourceGroups/rg_Gallery/providers/Microsoft.Compute/galleries/PersonalGallery/images/ImageDefinition" --specialized

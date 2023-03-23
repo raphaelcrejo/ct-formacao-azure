@@ -1,0 +1,24 @@
+Logar no Azure: az Login
+
+Set Subscription: az account set --subscription [mysubscription]
+
+Criar um Resource Group: az group create --name rg_vmwindows --location eastus
+
+Criar uma VM Windows: az vm create --resource-group rg_vmwindows --name winVM --image Win2022Datacenter --size Standard_B1s
+
+
+-------------------------------------------------------------------------------------------------
+
+Iniciar uma VM:	az vm start --resource-group rg_vmwindows --name winVM
+
+Parar uma VM: az vm stop --resource-group rg_vmwindows --name winVM
+
+Desalocar uma VM: az vm deallocate --resource-group rg_vmwindows --name winVM
+
+Reiniciar uma VM: az vm restart --resource-group rg_vmwindows --name winVM
+
+Excluir uma VM:	az vm delete --resource-group rg_vmwindows --name winVM
+
+Listar VMs: az vm list
+
+Obter informações sobre uma VM:	az vm show --resource-group rg_vmwindows --name winVM

@@ -1,0 +1,13 @@
+Logar no Azure: az Login
+
+Set Subscription: az account set --subscription [mysubscription]
+
+Criar um Resource Group: az group create --name rg_scaleset --location eastus
+
+Criar um scale set: az vmss create -n vm_scaleset -g rg_scaleset --instance-count 2 --image /subscriptions/00acdf14-1bef-48ab-afa0-f9a3fdc222fe/resourceGroups/rg_Gallery/providers/Microsoft.Compute/galleries/PersonalGallery/images/ImageDefinition/versions/1.0.0 --specialized --orchestration-mode Uniform
+
+Criar um Custom autoscale: az monitor autoscale create --resource-group rg_scaleset --resource vm_scaleset --resource-type Microsoft.Compute/virtualMachineScaleSets --name autoscale --min-count 2 --max-count 5 --count 2
+
+Criar Regra de Scale out: az monitor autoscale rule create --resource-group rg_scaleset --autoscale-name autoscale --condition "Percentage CPU > 70 avg 5m" --scale out 1
+
+Criar regra de Scale In: az monitor autoscale rule create --resource-group rg_scaleset --autoscale-name autoscale --condition "Percentage CPU < 25 avg 5m" --scale in 1

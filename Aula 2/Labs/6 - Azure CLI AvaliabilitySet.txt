@@ -1,0 +1,9 @@
+Logar no Azure: az Login
+
+Set Subscription: az account set --subscription [mysubscription]
+
+Criar um Resource Group: az group create --name rg_avset --location eastus
+
+
+Criar um availability set: az vm availability-set create -n AvSet -g rg_avset --platform-fault-domain-count 2 --platform-update-domain-count 5
+

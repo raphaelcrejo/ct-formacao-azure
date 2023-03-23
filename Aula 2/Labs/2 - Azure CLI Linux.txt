@@ -1,0 +1,22 @@
+Logar no Azure: az Login
+
+Set Subscription: az account set --subscription [mysubscription]
+
+Criar um Resource Group: az group create --name rg_linux --location eastus
+
+Criar uma VM Windows: az vm create --resource-group rg_linux --name linuxVM --image UbuntuLTS --admin-username [usuario] --admin-password ['password'] --size Standard_B1s
+
+------------------------------------------------------------------------------------------------
+Iniciar uma VM:	az vm start --resource-group rg_linux --name linuxVM
+
+Parar uma VM: az vm stop --resource-group rg_linux --name linuxVM
+
+Desalocar uma VM: az vm deallocate --resource-group rg_linux --name linuxVM
+
+Reiniciar uma VM: az vm restart --resource-group rg_linux --name linuxVM
+
+Excluir uma VM:	az vm delete --resource-group rg_linux --name linuxVM
+
+Listar VMs: az vm list
+
+Obter informações sobre uma VM:	az vm show --resource-group rg_linux --name linuxVM

@@ -1,0 +1,4 @@
+Set Subscription: az account set --subscription [mysubscription]
+
+az group create --name rg_formacaoAzure --location eastus
+

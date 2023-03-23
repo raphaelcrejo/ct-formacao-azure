@@ -1,0 +1,15 @@
+Se Linux
+
+Monitoração
+Htop
+
+Stress machine
+yes > /Dev/null &
+
+Matando processamento de Stress
+killall yes
+
+
+Se Windows
+Download Stress MyPC
+https://stressmypc.br.uptodown.com/windows
