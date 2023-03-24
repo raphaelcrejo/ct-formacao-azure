@@ -5,3 +5,4 @@ _ReSharper.*
 **/obj/*
 **/packages/*
 **/.vs/**
+**/.DS_Store/**
