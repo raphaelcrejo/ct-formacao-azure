@@ -1,0 +1,10 @@
+Logar no Azure: az Login
+
+Set Subscription: az account set --subscription [mysubscription]
+
+Criar um Resource Group: az group create --name rg_vnet--location eastus
+
+Criar uma Network Interface: az network nic create -g rg_vnet --vnet-name vNet1 --subnet Subnet1 -n NIC1
+
+az network nic ip-config update --name ipconfig1 --nic-name NIC1 --resource-group rg_vnet --public-ip-address IP1
+

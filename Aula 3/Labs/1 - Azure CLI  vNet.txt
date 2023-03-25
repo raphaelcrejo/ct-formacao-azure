@@ -1,0 +1,13 @@
+Logar no Azure: az Login
+
+Set Subscription: az account set --subscription [mysubscription]
+
+Criar um Resource Group: az group create --name rg_vnet --location eastus
+
+Criar uma VNet: az network vnet create --address-prefixes 10.0.0.0/16 --name vnet1 --resource-group rg_vnet --subnet-name subnet1 --subnet-prefixes 10.0.1.0/24
+
+Criar Subnet: az network vnet subnet create -g rg_vnet --vnet-name vnet1 -n subnet2 --address-prefixes 10.0.2.0/24 
+
+Criar uma vNet Peering: az network vnet peering create -g rg_vnet -n Vnet1ToVnet2 --vnet-name Vnet1 --remote-vnet /subscriptions/00acdf14-1bef-48ab-afa0-f9a3fdc222fe/resourceGroups/rg_vnet/providers/Microsoft.Network/virtualNetworks/vnet2 --allow-vnet-access
+
+az network vnet peering create -g rg_vnet -n Vnet2ToVnet1 --vnet-name Vnet2 --remote-vnet /subscriptions/00acdf14-1bef-48ab-afa0-f9a3fdc222fe/resourceGroups/rg_vnet/providers/Microsoft.Network/virtualNetworks/vnet1 --allow-vnet-access

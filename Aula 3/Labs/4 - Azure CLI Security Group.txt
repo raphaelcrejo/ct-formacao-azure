@@ -1,0 +1,11 @@
+Logar no Azure: az Login
+
+Set Subscription: az account set --subscription [mysubscription]
+
+Criar um Resource Group: az group create --name rg_vnet --location eastus
+
+az network nsg create -g rg_vnet -n NGG1
+
+az network nsg rule create -g rg_vnet --nsg-name NGG1 -n NGG1R1 --priority 100 --source-address-prefixes '*' --source-port-ranges 80 --destination-address-prefixes '*' --destination-port-ranges 80 --access Allow --protocol Tcp --description "Allow"
+
+az network asg create -g rg_vnet -n Asg1
