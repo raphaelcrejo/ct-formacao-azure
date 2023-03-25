@@ -1,0 +1,7 @@
+Logar no Azure: az Login
+
+Set Subscription: az account set --subscription [mysubscription]
+
+Criar um Resource Group: az group create --name rg_vnet --location eastus
+
+az network dns zone create -g rg_vnet -n augroberto.com.br
