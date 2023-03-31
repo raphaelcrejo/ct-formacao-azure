@@ -1,0 +1,10 @@
+Logar no Azure: az Login
+
+Set Subscription: az account set --subscription [mysubscription]
+
+Criar um Resource Group: az group create --name rg_webapp --location eastus
+
+az webapp list-runtimes
+
+Criar um service plan:az webapp create -g rg_webapp -p postcardplan -n postcard --runtime "dotnet:7"
+

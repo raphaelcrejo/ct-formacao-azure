@@ -1,0 +1,22 @@
+Instalar Visual Studio Code 
+https://code.visualstudio.com
+
+Instalar Dotnet
+https://dotnet.microsoft.com/en-us/download
+
+
+Dotnet new webapp
+
+Dotnet Build
+
+Dotnet Run
+
+dotnet publish -c Release -o ./publish
+
+Instalar App Insights CMD
+Install-Package Microsoft.ApplicationInsights.AspNetCore -Version 2.8.0
+Install-Package Microsoft.ApplicationInsights.AspNetCore
+
+Instalar App Insights VSCODE Terminal
+dotnet add package Microsoft.ApplicationInsights --version 2.20.0
+dotnet add package Microsoft.ApplicationInsights
