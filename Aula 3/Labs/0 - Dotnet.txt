@@ -1,0 +1,5 @@
+Instalar Visual Studio Code 
+https://code.visualstudio.com
+
+Instalar Dotnet
+https://dotnet.microsoft.com/en-us/download

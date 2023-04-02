@@ -1,0 +1,8 @@
+Logar no Azure: az Login
+
+Set Subscription: az account set --subscription [mysubscription]
+
+Criar um Resource Group: az group create --name rg_webapp --location eastus
+
+Criar um service plan: az appservice plan create -g rg_webapp -n postcardplan --hyper-v --number-of-workers 4 --sku S1
+

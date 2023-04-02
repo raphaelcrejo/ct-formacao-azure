@@ -1,0 +1,3 @@
+nslookup augroberto.corp
+
+nslookup app.augroberto.corp
