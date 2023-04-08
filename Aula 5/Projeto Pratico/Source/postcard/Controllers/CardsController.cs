@@ -23,11 +23,15 @@ namespace postcard.Controllers
         }
 
         // GET: /<controller>/
-        public IActionResult Index(int _iduf)
+        public IActionResult Index(int _iduf, string _estado)
         {
-            var model = new List<PostCards>();
+            var model = new Estado();
+            var modelcards = new List<PostCards>();
 
-            model = new SQLUtility().getcards("select postcards.id, postcards.id_uf, capas.uf, capas.estado, postcards.cidade, postcards.card, postcards.descricao from postcards INNER JOIN capas on capas.id = postcards.id_uf WHERE capas.Id = " + _iduf.ToString(), _configuration);
+            modelcards = new SQLUtility().getcards("select postcards.id, postcards.id_uf, capas.uf, postcards.cidade, postcards.card, postcards.descricao from postcards INNER JOIN capas on capas.id = postcards.id_uf WHERE capas.Id = " + _iduf.ToString(), _configuration);
+
+            model.estado = _estado;
+            model.listpostcards = modelcards;
 
             return View(model);
         }

@@ -8,7 +8,7 @@
                 <div class="card-body">
                     <h5 class="card-title">@item.estado</h5>
                     <p class="card-text">@item.musica<a href="@item.youtube" target="_blank">mais</a></p>
-                    <a href='@Url.Action("Index", "Cards", new { _iduf = item.id})' class="btn btn-primary">Ver cartões</a>
+                    <a href='@Url.Action("Index", "Cards", new { _iduf = item.id, _estado = item.estado })' class="btn btn-primary">Ver cartões</a>
                 </div>   
             </div>
         </div>

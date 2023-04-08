@@ -33,5 +33,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Views\Cards\" />
+    <None Remove="Models\Estado.proto" />
   </ItemGroup>
 </Project>
