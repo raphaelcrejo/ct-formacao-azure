@@ -12,8 +12,11 @@ namespace postcard.Controllers
 	{
         public string getconnectionstring(IConfiguration configuration)
         {
-            string connectionString = configuration.GetValue<string>("ConnectionStrings:SQLDatabase");
-
+#if DEBUG
+            var connectionString = configuration.GetValue<string>("ConnectionStrings:SQLDatabaseConnection");
+#else
+            var connectionString = configuration.GetConnectionString("SQLDatabaseConnection");
+#endif
             return connectionString;
         }
 
