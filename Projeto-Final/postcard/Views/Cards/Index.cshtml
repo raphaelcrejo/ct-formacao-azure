@@ -10,7 +10,7 @@
                     <div class="card-body">
                         <h5 class="card-title">@item.cidade - @item.descricao</h5>
                         <p class="card-text"></p>
-                        <a href='#' class="btn btn-primary">Download</a>
+                        <a href='@Url.Action("DownloadFile", "Cards", new { _path = "images/cards/"+@item.uf+"/"+@item.card, _card = @item.card })' class="btn btn-primary">Download</a>
                     </div>
                 </div>
             </div>

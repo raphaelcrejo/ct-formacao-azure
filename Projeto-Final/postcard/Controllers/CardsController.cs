@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -34,6 +35,13 @@ namespace postcard.Controllers
             model.listpostcards = modelcards;
 
             return View(model);
+        }
+
+        public FileResult DownloadFile(string _path, string _card)
+        {
+            string contentType = "application/jpeg";
+
+            return File(_path, contentType, _card);
         }
     }
 }
