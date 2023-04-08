@@ -33,7 +33,7 @@ public class HomeController : Controller
             }
         }
         
-        modelcapa = new SQLUtility().getcapas("SELECT Id, uf, musica, youtube, imagem FROM capas", _configuration);
+        modelcapa = new SQLUtility().getcapas("SELECT Id, uf, estado, musica, youtube, imagem FROM capas", _configuration);
 
         model.listcapas = modelcapa;
 
