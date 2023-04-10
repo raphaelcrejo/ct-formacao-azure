@@ -97,11 +97,11 @@ namespace postcard.Controllers
             return tableClient;
         }
 
-        public async Task<FeatureFlag> getfeatureflag(IConfiguration configuration, string uf, string estado)
+        public async Task<FeatureToggle> getfeaturetoggle(IConfiguration configuration, string uf, string estado)
         {
             var tableClient = await gettable(configuration);
 
-            return await tableClient.GetEntityAsync<FeatureFlag>(uf, estado);
+            return await tableClient.GetEntityAsync<FeatureToggle>(uf, estado);
         }
     }
 }

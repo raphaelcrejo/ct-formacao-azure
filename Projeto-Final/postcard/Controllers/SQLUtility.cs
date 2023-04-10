@@ -33,7 +33,7 @@ namespace postcard.Controllers
                 blobs = await new StorageUtility().getcontainer(configuration);
 
                 //Get Table FeatureFlag
-                var toggle = new FeatureFlag();
+                var toggle = new FeatureToggle();
 
                 using (SqlConnection con = new SqlConnection(getconnectionstring(configuration)))
 				{
@@ -64,7 +64,7 @@ namespace postcard.Controllers
                         }
 
                         //Verify toggle
-                        toggle = await new StorageUtility().getfeatureflag(configuration, capa.uf, capa.estado);
+                        toggle = await new StorageUtility().getfeaturetoggle(configuration, capa.uf, capa.estado);
 
                         if (toggle.ativo == "true")
                         {

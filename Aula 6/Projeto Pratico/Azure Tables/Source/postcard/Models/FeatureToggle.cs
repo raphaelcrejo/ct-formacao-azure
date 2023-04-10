@@ -4,7 +4,7 @@ using Azure.Data.Tables;
 
 namespace postcard.Models
 {
-	public class FeatureFlag : ITableEntity
+	public class FeatureToggle : ITableEntity
     {
 		public string PartitionKey { get; set; }
 		public string RowKey { get; set; }
