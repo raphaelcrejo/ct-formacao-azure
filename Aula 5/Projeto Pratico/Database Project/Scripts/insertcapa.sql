@@ -2,7 +2,7 @@ INSERT INTO capas (uf, estado, musica, youtube, imagem)
 VALUES ('SP', 'São Paulo', 'Não posso ficar Nem mais um minuto com você Sinto muito, amor Mas não pode ser Moro em Jaçanã...', 'https://www.youtube.com/watch?v=XoUtxWU8lW8', 'capa-sp.jpeg');
 
 INSERT INTO capas (uf, estado, musica, youtube, imagem)
-VALUES ('MG', 'Minas Geais', 'É aqui que eu amo É aqui que eu quero ficar Pois não há á á! Lugar melhor que BH..', 'https://www.youtube.com/watch?v=0k35a0mu6dw', 'capa-bh.jpeg');
+VALUES ('MG', 'Minas Geais', 'É aqui que eu amo É aqui que eu quero ficar Pois não há á á! Lugar melhor que BH..', 'https://www.youtube.com/watch?v=0k35a0mu6dw', 'capa-mg.jpeg');
 
 INSERT INTO capas (uf, estado, musica, youtube, imagem)
 VALUES ('RJ', 'Rio de Janeiro', 'O Rio de Janeiro continua lindo O Rio de Janeiro continua sendo O Rio de Janeiro, fevereiro e março...', 'https://www.youtube.com/watch?v=HB8vbB5ILUU&t=1s', 'capa-rj.jpeg');
