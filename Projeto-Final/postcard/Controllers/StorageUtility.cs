@@ -13,6 +13,8 @@ using System.IO;
 using System.IO.Compression;
 using Azure.Data.Tables;
 using Azure.Storage.Queues;
+using Azure.Storage.Files.Shares;
+using Azure;
 
 namespace postcard.Controllers
 {
@@ -27,11 +29,13 @@ namespace postcard.Controllers
             var blobContainername = configuration.GetValue<string>("StorageBlobs:ContainerName");
             var tableName = configuration.GetValue<string>("StorageBlobs:TableName");
             var queueName = configuration.GetValue<string>("StorageBlobs:QueueName");
+            var fileshareName = configuration.GetValue<string>("StorageBlobs:FileShareName");
 #else
             var connectionString = configuration.GetConnectionString("AzureBlobStorageConnection");
             var connectionString = configuration.GetConnectionString("ContainerName");
             var tableName = configuration.GetConnectionString("TableName");
             var tableName = configuration.GetConnectionString("QueueName");
+            var tableName = configuration.GetConnectionString("FileShareName");
 #endif
             var blobcontainerparams = new List<string>();
 
@@ -39,6 +43,7 @@ namespace postcard.Controllers
             blobcontainerparams.Add(blobContainername);
             blobcontainerparams.Add(tableName);
             blobcontainerparams.Add(queueName);
+            blobcontainerparams.Add(fileshareName);
 
             return blobcontainerparams;
         }
@@ -108,7 +113,6 @@ namespace postcard.Controllers
             return await tableClient.GetEntityAsync<FeatureToggle>(uf, estado);
         }
 
-
         public void SendMessageToQueue(IConfiguration configuration, string message)
         {
             var blobcontainerparams = getstorageconnectionstring(configuration);
@@ -121,6 +125,19 @@ namespace postcard.Controllers
             {
                 queueClient.SendMessage(message);
             }
+        }
+
+        public void uploadfiletoshare(IConfiguration configuration, string filename, FileStream stream)
+        {
+            var blobcontainerparams = getstorageconnectionstring(configuration);
+            ShareClient share = new ShareClient(blobcontainerparams[0].ToString(), blobcontainerparams[4].ToString());
+
+            var directory = share.GetDirectoryClient("");
+            var file = directory.GetFileClient(filename);
+
+            file.Create(stream.Length);
+            stream.Position = 0;
+            file.UploadRange(new HttpRange(0, stream.Length), stream);
         }
     }
 }

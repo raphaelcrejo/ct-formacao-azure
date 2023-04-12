@@ -1,0 +1,6 @@
+SP, São Paulo, true
+MG, Minas Gerais, true
+RJ, Rio de Janeiro, true
+PA, Pará, true
+BA, Bahia, true
+PR, Paraná, true

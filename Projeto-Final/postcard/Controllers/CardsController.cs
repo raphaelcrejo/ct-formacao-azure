@@ -53,13 +53,6 @@ namespace postcard.Controllers
             return View(model);
         }
 
-        //public FileResult DownloadFile(string _path, string _card)
-        //{
-        //    string contentType = "application/jpeg";
-
-        //    return File(_path, contentType, _card);
-        //}
-
         public async Task<ActionResult> DownloadFile(string cardname, string filename, string URLimg, string hostip)
         {
             Stream stream = await new StorageUtility().getstreamtodownload(_configuration, cardname);
