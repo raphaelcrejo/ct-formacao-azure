@@ -66,7 +66,7 @@ namespace postcard.Controllers
                         //Verify toggle
                         toggle = await new StorageUtility().getfeaturetoggle(configuration, capa.uf, capa.estado);
 
-                        if (toggle.ativo == "true")
+                        if (toggle.ativo.ToString() == "true")
                         {
                             capas.Add(capa);
                         }

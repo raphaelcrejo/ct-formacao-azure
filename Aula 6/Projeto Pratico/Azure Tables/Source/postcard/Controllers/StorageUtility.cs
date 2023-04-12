@@ -21,14 +21,13 @@ namespace postcard.Controllers
 
         public List<string> getstorageconnectionstring(IConfiguration configuration)
         {
-#if DEBUG
-            var connectionString = configuration.GetValue<string>("ConnectionStrings:AzureBlobStorageConnection");
             var blobContainername = configuration.GetValue<string>("StorageBlobs:ContainerName");
             var tableName = configuration.GetValue<string>("StorageBlobs:TableName");
+
+#if DEBUG
+            var connectionString = configuration.GetValue<string>("ConnectionStrings:AzureBlobStorageConnection");
 #else
             var connectionString = configuration.GetConnectionString("AzureBlobStorageConnection");
-            var connectionString = configuration.GetConnectionString("ContainerName");
-            var tableName = configuration.GetConnectionString("TableName");
 #endif
             var blobcontainerparams = new List<string>();
 
