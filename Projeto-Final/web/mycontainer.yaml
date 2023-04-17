@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postcard-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: postcard-pod
+  template:
+    metadata:
+      labels:
+        app: postcard-pod
+    spec:
+      containers:
+      - name: postcard-container
+        image: augrobertoaci.azurecr.io/postcard:latest
+        resources:
+          limits:
+            cpu: 500m
+            memory: 128Mi
+        ports:
+        - containerPort: 80
+          name: application
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postcard-service
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 8080
+    targetPort: 80
+  selector:
+    app: postcard-pod

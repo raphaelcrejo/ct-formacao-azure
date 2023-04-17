@@ -1,0 +1,28 @@
+docker --version
+
+docker build -t comunidadecloud .
+
+docker run -it --rm -p 80:80 --name comunidadecloud comunidadecloud
+
+docker build -t comunidadecloud.azurecr.io/mycontainer:latest .
+
+docker login comunidadecloud.azurecr.io
+
+docker push comunidadecloud.azurecr.io/mycontainer:latest
+
+
+az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
+
+kubectl get nodes
+
+kubectl apply -f mycontainer.yaml
+
+kubectl get service
+
+kubectl get service comunidadecloud --watch
+
+kubectl delete -f mycontainer.yaml
+
+az acr update --name cloudtreinamentos --anonymous-pull-enabled
+
+kubectl apply -f mycontainer.yaml
