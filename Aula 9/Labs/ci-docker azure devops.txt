@@ -1,0 +1,47 @@
+# Docker
+# Build and push an image to Azure Container Registry
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+
+trigger:
+- main
+
+resources:
+- repo: self
+
+variables:
+  # Container registry service connection established during pipeline creation
+  dockerRegistryServiceConnection: 'b016e27e-3bbe-4c03-b303-483e778c0a4f'
+  imageRepository: 'postcard'
+  containerRegistry: 'postcard.azurecr.io'
+  dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
+  tag: '$(Build.BuildNumber)'
+
+  # Agent VM image name
+  #vmImageName: 'Augustos-Mac-mini'
+#pool:
+#  name: Default
+#  demands:
+#   - agent.name -equals Augustos-Mac-mini
+
+
+stages:
+- stage: Build
+  displayName: Build and push stage
+  jobs:
+  - job: Build
+    displayName: Build
+    pool:
+      #vmImage: $(vmImageName)
+      name: Default
+      demands:
+        - agent.name -equals Augustos-Mac-mini
+    steps:
+    - task: Docker@2
+      displayName: Build and push an image to container registry
+      inputs:
+        command: buildAndPush
+        repository: $(imageRepository)
+        dockerfile: $(dockerfilePath)
+        containerRegistry: $(dockerRegistryServiceConnection)
+        tags: |
+          $(tag)
