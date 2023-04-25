@@ -15,11 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    - uses: azure/docker-login@v1
-      with:
-        login-server: acrcomunidadecloud.azurecr.io/mycontainer
-        username: ${{ secrets.ACR_USERNAME }}
-        password: ${{ secrets.ACR_PASS }}
+	
         
     - run: |
         docker build -t acrcomunidadecloud.azurecr.io/mycontainer:${{github.run_number}} .
